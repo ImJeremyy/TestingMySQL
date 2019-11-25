@@ -1,0 +1,21 @@
+# MySQL - CaSe SeNsItIvE !
+# -
+# host: address of the database
+# database: name of database
+# port: port (usually 4 digits, eg = 3306)
+# username: username for database priveleges
+# password: leave blank if there is no password
+# -
+# example:
+# host: 'localhost'
+# database: 'lemon'
+# port: 3306
+# username: 'root'
+# password: ''
+# -
+enabled: false
+host: 'localhost'
+database: 'lemon'
+port: 3306
+username: 'root'
+password: ''
