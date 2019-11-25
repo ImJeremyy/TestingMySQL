@@ -28,10 +28,6 @@ public class LemonDB {
         }
     }
 
-    public boolean playerExists(UUID uuid) {
-
-    }
-
     /**
      * Check if the connection to the database is valid.
      *
