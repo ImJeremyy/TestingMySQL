@@ -22,7 +22,7 @@ public class LemonDB {
      */
     public LemonDB(String host, String databaseName, int port, String username, String password) {
         if (!isConnectionValid()) { //if the connection is not valid..
-            openConnection(host, databaseName, port, username, password); //open the connection!
+            openConnection(getSQLConnectionURL(host, databaseName, port), username, password); //open the connection!
         } else {
             Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Database already connected.");
         }
@@ -47,17 +47,14 @@ public class LemonDB {
 
     /**
      * Opens the connection (makes 'connection' not null)
-     * @param host         - host (eg: localhost)
-     * @param databaseName - name (eg: lemon)
-     * @param port         - port (eg: default = 3306)
+     * @param url          - url of the database
      * @param username     - username (eg: default = root)
      * @param password     - password (eg: password or "" if there is no password)
      */
-    private void openConnection(String host, String databaseName, int port, String username, String password) {
+    private void openConnection(String url, String username, String password) {
         Bukkit.getConsoleSender().sendMessage(ChatColor.GOLD + "Attempting to form SQL connection...");
         if (!isConnectionValid()) { //if there isn't a connection already...
             try {
-                String url = getSQLConnectionURL(host, databaseName, port);
                 this.connection = DriverManager.getConnection(url, username, password == "" ? null : password);
                 Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "SQL Connection successful!");
             } catch (SQLException e) {
