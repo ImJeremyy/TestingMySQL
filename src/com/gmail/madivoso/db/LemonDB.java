@@ -6,7 +6,6 @@ import org.bukkit.ChatColor;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.UUID;
 
 public class LemonDB {
 
@@ -14,6 +13,7 @@ public class LemonDB {
 
     /**
      * Instantiate the database
+     *
      * @param host         - eg: localhost
      * @param databaseName - eg: lemon
      * @param port         - eg: 3306
@@ -43,9 +43,10 @@ public class LemonDB {
 
     /**
      * Opens the connection (makes 'connection' not null)
-     * @param url          - url of the database
-     * @param username     - username (eg: default = root)
-     * @param password     - password (eg: password or "" if there is no password)
+     *
+     * @param url      - url of the database
+     * @param username - username (eg: default = root)
+     * @param password - password (eg: password or "" if there is no password)
      */
     private void openConnection(String url, String username, String password) {
         Bukkit.getConsoleSender().sendMessage(ChatColor.GOLD + "Attempting to form SQL connection...");

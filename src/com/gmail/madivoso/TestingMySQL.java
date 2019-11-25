@@ -16,7 +16,7 @@ public class TestingMySQL extends JavaPlugin {
     @Override
     public void onEnable() {
         initConfig();
-        if(getConfig().getBoolean("enabled")) {
+        if (getConfig().getBoolean("enabled")) {
             initDBInfo();
             db = new LemonDB(host, databaseName, port, username, password);
         }
@@ -32,11 +32,11 @@ public class TestingMySQL extends JavaPlugin {
 //        password = "";
 //        port = 3306;
 
-         host = getConfig().getString("host");
-         databaseName = getConfig().getString("database");
-         port = getConfig().getInt("port");
-         username = getConfig().getString("username");
-         password = getConfig().getString("password");
+        host = getConfig().getString("host");
+        databaseName = getConfig().getString("database");
+        port = getConfig().getInt("port");
+        username = getConfig().getString("username");
+        password = getConfig().getString("password");
     }
 
     /**
