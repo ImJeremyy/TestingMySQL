@@ -56,23 +56,13 @@ public class LemonDB {
     private void openConnection(String host, String databaseName, int port, String username, String password) {
         Bukkit.getConsoleSender().sendMessage(ChatColor.GOLD + "Attempting to form SQL connection...");
         if (!isConnectionValid()) { //if there isn't a connection already...
-            String url = getSQLConnectionURL(host, databaseName, port);
             try {
-//                synchronized(this) {
-//                    Class.forName("com.mysql.jdbc.Driver");
-                if (password == "") { //if the database has no password
-                    this.connection = DriverManager.getConnection(url, username, null); //username and password are @Nullable parameters
-                } else {
-                    this.connection = DriverManager.getConnection(url, username, password);
-                }
-//                }
+                String url = getSQLConnectionURL(host, databaseName, port);
+                this.connection = DriverManager.getConnection(url, username, password == "" ? null : password);
                 Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "SQL Connection successful!");
             } catch (SQLException e) {
                 e.printStackTrace();
                 Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "SQL Connection unsuccessful.");
-//            } catch (ClassNotFoundException e) {
-//                e.printStackTrace();
-//                Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "SQL Connection unsuccessful.");
             }
         }
     }
