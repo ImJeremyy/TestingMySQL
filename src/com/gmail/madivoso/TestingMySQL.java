@@ -1,6 +1,9 @@
 package com.gmail.madivoso;
 
+import com.gmail.madivoso.commands.TestCommand;
 import com.gmail.madivoso.database.SampleDB;
+import com.gmail.madivoso.listeners.JoinListener;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class TestingMySQL extends JavaPlugin {
@@ -12,6 +15,8 @@ public class TestingMySQL extends JavaPlugin {
     public void onEnable() {
         initConfig();
         initDB();
+        initListeners();
+        initCommands();
     }
 
     public SampleDB getSampleDB() {
@@ -38,6 +43,15 @@ public class TestingMySQL extends JavaPlugin {
     private void initConfig() {
         getConfig().options().copyDefaults(true);
         saveConfig();
+    }
+
+    private void initCommands() {
+        getCommand("test").setExecutor(new TestCommand(this));
+    }
+
+    private void initListeners() {
+        PluginManager pm = getServer().getPluginManager();
+        pm.registerEvents(new JoinListener(this), this);
     }
 
 }

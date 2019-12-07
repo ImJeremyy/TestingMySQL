@@ -2,3 +2,7 @@ name: TestingMySQL
 version: 1.0
 api-version: 1.14
 main: com.gmail.madivoso.TestingMySQL
+commands:
+  test:
+    description: Test command
+    usage: /<command>
