@@ -1,42 +1,35 @@
 package com.gmail.madivoso;
 
-import com.gmail.madivoso.db.LemonDB;
+import com.gmail.madivoso.database.SampleDB;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class TestingMySQL extends JavaPlugin {
 
-    private String host;
-    private String databaseName;
-    private int port;
-    private String username;
-    private String password;
 
-    private LemonDB db;
+    private SampleDB db;
 
     @Override
     public void onEnable() {
         initConfig();
-        if (getConfig().getBoolean("enabled")) {
-            initDBInfo();
-            db = new LemonDB(host, databaseName, port, username, password);
-        }
+        initDB();
+    }
+
+    public SampleDB getSampleDB() {
+        return db;
     }
 
     /**
-     * Obtains the database info from the config.yml
+     * Initializes SampleDB object.
      */
-    private void initDBInfo() {
-//        host = "localhost";
-//        databaseName = "lemon";
-//        username = "root";
-//        password = "";
-//        port = 3306;
-
-        host = getConfig().getString("host");
-        databaseName = getConfig().getString("database");
-        port = getConfig().getInt("port");
-        username = getConfig().getString("username");
-        password = getConfig().getString("password");
+    private void initDB() {
+        if(getConfig().getBoolean("enabled")) { //if enabled: true
+            String host = getConfig().getString("host");
+            String databaseName = getConfig().getString("database");
+            int port = getConfig().getInt("port");
+            String username = getConfig().getString("username");
+            String password = getConfig().getString("password");
+            db = new SampleDB(host, databaseName, port, username, password);
+        }
     }
 
     /**
