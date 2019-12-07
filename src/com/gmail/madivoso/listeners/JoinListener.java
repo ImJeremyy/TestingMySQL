@@ -24,10 +24,7 @@ public class JoinListener implements Listener {
     @EventHandler (priority = EventPriority.LOW)
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        UUID uuid = player.getUniqueId();
-        String name = player.getName();
-
-
+        sdb.registerNewPlayer(player);
     }
 
 }
