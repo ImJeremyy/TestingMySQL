@@ -1,4 +1,4 @@
-package com.gmail.madivoso.db;
+package com.gmail.madivoso.database;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class LemonDB {
+public class SampleDB {
 
     private Connection connection;
 
@@ -20,7 +20,7 @@ public class LemonDB {
      * @param username     - eg: root
      * @param password     - eg: password
      */
-    public LemonDB(String host, String databaseName, int port, String username, String password) {
+    public SampleDB(String host, String databaseName, int port, String username, String password) {
         if (!isConnectionValid()) { //if the connection is not valid..
             openConnection(getSQLConnectionURL(host, databaseName, port), username, password); //open the connection!
         } else {
