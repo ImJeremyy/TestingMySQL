@@ -1,11 +1,11 @@
 package com.gmail.madivoso.database;
 
+import com.gmail.madivoso.TestingMySQL;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class SampleDB {
 
@@ -26,6 +26,42 @@ public class SampleDB {
         } else {
             Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Database already connected.");
         }
+    }
+
+    public void registerNewPlayer(OfflinePlayer player) {
+        String uuid = player.getUniqueId().toString();
+        String name = player.getName();
+
+        try {
+            PreparedStatement check = connection.prepareCall("SELECT uuid FROM players WHERE uuid = ?;");
+            check.setString(1, uuid);
+            ResultSet set = check.executeQuery();
+            if(set.next()) {
+                PreparedStatement ps = connection.prepareStatement("INSERT INTO players (uuid, name) VALUES (?  ?);");
+                ps.setString(1, uuid);
+                ps.setString(2, name);
+                ps.execute();
+
+                //display the changes
+                PreparedStatement view = connection.prepareStatement("SELECT * FROM players;");
+                ResultSet rs = view.executeQuery();
+                displayResultSet(rs);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void displayResultSet(ResultSet set) throws SQLException {
+        ResultSetMetaData meta = set.getMetaData();
+        for(int i = 0; i < meta.getColumnCount(); i++) {
+            if(i > 1) {
+                System.out.println(", ");
+            }
+            String columnValue = set.getString(i);
+            System.out.println(columnValue + " " + meta.getColumnName(i));
+        }
+        System.out.println();
     }
 
     /**
