@@ -8,10 +8,8 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import java.util.UUID;
-
 /**
- * Handles when event when player joins.
+ * Handles event when player joins.
  */
 public class JoinListener implements Listener {
 
@@ -21,10 +19,12 @@ public class JoinListener implements Listener {
        sdb = plugin.getSampleDB();
     }
 
-    @EventHandler (priority = EventPriority.LOW)
-    public void onJoin(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
-        sdb.registerNewPlayer(player);
+    @EventHandler (priority = EventPriority.HIGHEST)
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        if(sdb != null) {
+            Player player = event.getPlayer();
+            sdb.registerNewPlayer(player);
+        }
     }
 
 }
