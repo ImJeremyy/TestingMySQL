@@ -1,6 +1,7 @@
 package com.gmail.madivoso;
 
 import com.gmail.madivoso.commands.TestCommand;
+import com.gmail.madivoso.commands.TestingMySQLReloadCommand;
 import com.gmail.madivoso.database.SampleDB;
 import com.gmail.madivoso.listeners.JoinListener;
 import org.bukkit.plugin.PluginManager;
@@ -21,6 +22,11 @@ public class TestingMySQL extends JavaPlugin {
 
     public SampleDB getSampleDB() {
         return db;
+    }
+
+    public void reloadDB() {
+        reloadConfig();
+        initDB();
     }
 
     /**
@@ -47,6 +53,7 @@ public class TestingMySQL extends JavaPlugin {
 
     private void initCommands() {
         getCommand("test").setExecutor(new TestCommand(this));
+        getCommand("testingmysqlreload").setExecutor(new TestingMySQLReloadCommand(this));
     }
 
     private void initListeners() {
