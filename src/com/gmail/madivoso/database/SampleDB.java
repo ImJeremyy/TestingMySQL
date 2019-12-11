@@ -90,7 +90,7 @@ public class SampleDB {
             try {
                 this.connection = DriverManager.getConnection(url, username, password == "" ? null : password);
                 Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "SQL Connection successful!");
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "SQL Connection unsuccessful.");
             }
@@ -107,6 +107,7 @@ public class SampleDB {
      * @return SQL URL
      */
     private String getSQLConnectionURL(String host, String databaseName, int port) {
+        //jdbc:mysql://localhost:3306/?user=root
         return "jdbc:mysql://" + host + ":" + port + "/" + databaseName;
     }
 
