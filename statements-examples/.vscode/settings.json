@@ -1,0 +1,17 @@
+{
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "sqltools.connections": [
+        {
+            "askForPassword": true,
+            "connectionTimeout": 120,
+            "database": "players",
+            "dialect": "MySQL",
+            "isActive": false,
+            "isConnected": false,
+            "name": "Local Host",
+            "port": 3306,
+            "server": "localhost",
+            "username": "root"
+        }
+    ]
+}

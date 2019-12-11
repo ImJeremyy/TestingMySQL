@@ -1,0 +1,35 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - App",
+            "request": "launch",
+            "mainClass": "sql.App",
+            "projectName": "MySQLTest"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "Main"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Lemon",
+            "request": "launch",
+            "mainClass": "Lemon"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - New",
+            "request": "launch",
+            "mainClass": "New"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Taco",
+            "request": "launch",
+            "mainClass": "Taco"
+        }
+    ]
+}
